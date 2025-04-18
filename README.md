@@ -7,7 +7,7 @@ Create a csv file called `members_list.csv` with the following fields:
 - role (Must be one of ["bartender", "coordinateur", "fondateur", "président"])
 
 ### Disponibilty csv file
-Create a csv file called `` with the following fields:
+Create a csv file called `disponibility.csv` with the following fields:
 - login (Can be anything)
 - nombre_de_shifts_souhaite (Must be u8)
 - lundi_midi (Must be one of ["Disponible", "Non disponible", "Disponible seulement si nécessaire"])
