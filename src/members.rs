@@ -58,24 +58,26 @@ impl From<Disponibility> for [Availability; 14] {
     }
 }
 
-impl From<String> for Availability {
-    fn from(value: String) -> Self {
-        if value == "Disponible" {
-            return Self::Available;
+impl From<&str> for Availability {
+    fn from(value: &str) -> Self {
+        match value {
+            "Disponible" => Availability::Available,
+            "Disponible seulement si nécessaire" => Availability::AvailableIfNecessary,
+            "Non disponible" => Availability::NotAvailable,
+            _ => panic!("From<String> for Availability value: {value}"),
         }
-        if value == "Non disponible" {
-            return Self::NotAvailable;
-        }
-        if value == "Disponible seulement si nécessaire" {
-            return Self::AvailableIfNecessary;
-        }
-        panic!("From<String> for Availability value: {value}");
     }
 }
 
-impl Into<&str> for Availability {
-    fn into(self) -> &'static str {
-        match self {
+impl From<String> for Availability {
+    fn from(value: String) -> Self {
+        value.as_str().into()
+    }
+}
+
+impl From<Availability> for &str {
+    fn from(value: Availability) -> Self {
+        match value {
             Availability::Available => "Disponible",
             Availability::AvailableIfNecessary => "Disponible seulement si nécessaire",
             Availability::NotAvailable => "Non disponible",

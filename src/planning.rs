@@ -14,11 +14,11 @@ struct MemberScore {
 }
 
 pub fn create_planning(members: &[Member]) -> [Vec<MemberIndex>; SHIFT_COUNT] {
-    let mut member_scores = member_scores(&members);
+    let mut member_scores = member_scores(members);
 
     let result: [Vec<MemberIndex>; SHIFT_COUNT] = std::array::from_fn(|shift_index| {
         let top_score = recalculate_score(&mut member_scores, shift_index, members);
-        let available_members = available_members(&members, shift_index, &member_scores, top_score);
+        let available_members = available_members(members, shift_index, &member_scores, top_score);
         // print_scores(&member_scores, members, &available_members);
         let shift = create_shift(&mut member_scores, available_members, members, shift_index);
         update_shifts(shift_index, &shift, &mut member_scores);

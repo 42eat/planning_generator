@@ -11,7 +11,7 @@ pub fn generate_planning_csv(members: &[Member], planning: &[Vec<MemberIndex>]) 
     for (member_index, member) in members.iter().enumerate() {
         csv += &member.login;
         for (shift_index, shift) in planning.iter().enumerate() {
-            let shift = shift.iter().map(|s| *s).collect::<HashSet<MemberIndex>>();
+            let shift = shift.iter().copied().collect::<HashSet<MemberIndex>>();
             let member_availability = member.availability[shift_index];
             if !shift.contains(&member_index) {
                 csv = csv + "," + member_availability.into();
