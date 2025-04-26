@@ -28,3 +28,11 @@ Create a csv file called `disponibility.csv` with the following fields:
 
 ## Parameters:
 See src/consts.rs
+
+## Usage:
+- Install rust `curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh`
+- Prepare `disponibility.csv` and `members_list.csv` as described above
+- Run `cargo run`
+
+This will output the planning on `stdout` as well as generate `result.csv` with the planning in
+csv format
